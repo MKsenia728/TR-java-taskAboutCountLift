@@ -52,7 +52,9 @@ public class Lift {
     }
 
     public int getMaxCountLifts() {
-        calcMaxCountLifts(1, 0, new ArrayList<>());
+//        if (maxCountLifts ==0 ) {
+            calcMaxCountLifts(1, 0, new ArrayList<>());
+//        }
         return maxCountLifts;
     }
 
@@ -114,6 +116,9 @@ public class Lift {
 //        end creating data file
         Lift lift = new Lift("routs_lifts.txt");
         System.out.println("Максимальное число использованных лифтов : " + lift.getMaxCountLifts());
+        try (FileWriter writer = new FileWriter("result.txt")){
+            writer.write(Integer.toString(lift.getMaxCountLifts()));
+        }
         lift.printRoute();
     }
 }
